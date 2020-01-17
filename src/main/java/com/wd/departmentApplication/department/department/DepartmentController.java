@@ -13,35 +13,40 @@ import java.util.List;
 public class DepartmentController {
 
     @Autowired
-    private DepartmentService departmentService;
+    private DepartmentService departmentService; // Injecting dependency
 
+    /* Registering Departments */
     @PostMapping
     public ResponseEntity registerDepartment(@RequestBody(required= true) Department department){
         departmentService.registerDepartment(department);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+    /* Display entire department details stored in database */
     @GetMapping
     public ResponseEntity <List<Department>> getAllDepartment(){
         List<Department> dept = departmentService.getAllDepartment();
         return new ResponseEntity(dept,HttpStatus.OK);
     }
 
-    @GetMapping("{department_id}")
-    public ResponseEntity<Department> getDepartment(@PathVariable(value="department_id") Integer department_id){
-       Department department= departmentService.getDepartment(department_id);
+    /* Display specific department details */
+    @GetMapping("{departmentId}")
+    public ResponseEntity<Department> getDepartment(@PathVariable(value="departmentId") Integer departmentId){
+       Department department= departmentService.getDepartment(departmentId);
         return new ResponseEntity(department,HttpStatus.OK);
     }
 
-    @PutMapping("{department_id}")
-    public ResponseEntity updateDepartment(@PathVariable(value="department_id") Integer department_id,@RequestBody(required= true) Department department){
-        departmentService.updateDepartment(department_id,department);
+    /* Update specific department details */
+    @PutMapping("{departmentId}")
+    public ResponseEntity updateDepartment(@PathVariable(value="departmentId") Integer departmentId,@RequestBody(required= true) Department department){
+        departmentService.updateDepartment(departmentId,department);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @DeleteMapping("{department_id}")
-    public ResponseEntity deleteDepartment(@PathVariable(value="department_id") Integer department_id){
-        departmentService.deleteDepartment(department_id);
+    /* Delete specific department details */
+    @DeleteMapping("{departmentId}")
+    public ResponseEntity deleteDepartment(@PathVariable(value="departmentId") Integer departmentId){
+        departmentService.deleteDepartment(departmentId);
         return new ResponseEntity(HttpStatus.OK);
     }
 

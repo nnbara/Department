@@ -10,28 +10,33 @@ import java.util.Optional;
 public class DepartmentService {
 
     @Autowired
-    private DepartmentRepository departmentRepository;
+    private DepartmentRepository departmentRepository; // Injecting dependency
 
+    /* Saving registered Departments in database */
     public void registerDepartment(Department department){
         departmentRepository.save(department);
     }
 
+    /* To get entire department details stored in database */
     public List<Department> getAllDepartment(){
         List<Department> dept_list=departmentRepository.findAll();
         return dept_list;
     }
 
-    public Department getDepartment(int department_id){
-        Optional<Department> department=departmentRepository.findById(department_id);
+    /* To get specific department details from database */
+    public Department getDepartment(int departmentId){
+        Optional<Department> department=departmentRepository.findById(departmentId);
         return department.get();
     }
 
-    public void updateDepartment(int department_id,Department department){
-        department.setDepartment_id(department_id);
+    /* To save updated department details in database*/
+    public void updateDepartment(int departmentId,Department department){
+        department.setDepartmentId(departmentId);
         departmentRepository.save(department);
     }
 
-    public void deleteDepartment(int department_id){
-        departmentRepository.deleteById(department_id);
+    /* To delete specific department details from database */
+    public void deleteDepartment(int departmentId){
+        departmentRepository.deleteById(departmentId);
     }
 }

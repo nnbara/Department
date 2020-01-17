@@ -11,19 +11,20 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private int department_id;
-    private String name;
+    private int departmentId;
+    private String name; //Department Name
     private String domain;
     private String budget;
-    private String start_date;
-    private String department_head;
+    private String startDate;
+    private String departmentHead;
 
-    public int getDepartment_id() {
-        return department_id;
+    //Getter and setter
+    public int getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartment_id(int department_id) {
-        this.department_id = department_id;
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getName() {
@@ -51,21 +52,18 @@ public class Department {
     }
 
     public String getStartDate() {
-        return start_date;
+        return startDate;
     }
 
     public void setStartDate(String startDate) {
-        this.start_date = startDate;
+        this.startDate = startDate;
     }
 
-    public String getDepartment_head() {
-        return department_head;
+    public String getDepartmentHead() {
+        return departmentHead;
     }
 
-    public void setDepartment_head(String department_head) {
-        this.department_head = department_head;
+    public void setDepartmentHead(String departmentHead) {
+        this.departmentHead = departmentHead;
     }
-
-
-
 }
